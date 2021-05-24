@@ -1,9 +1,9 @@
 # Tho Remake
 
-###Description
+### Description
 A multipurpose helper discord bot that uses discord.js and couple other API's.
 
-###Install
+### Install
 
 ```
 npm install
@@ -12,7 +12,7 @@ npm install
 ###Usage
 
 
-*Create .env file with this structure for your api keys and mariadb database access.
+* Create .env file with this structure for your api keys and mariadb database access.
 
 ```
 DISCORD_API=yourdiscordapihere
@@ -21,7 +21,7 @@ DB_USER=mariadbuser
 DB_PW=mariadbpassword
 ```
 
-*Running the bot
+* Running the bot
 
 ```
 node client.js
