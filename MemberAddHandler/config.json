@@ -1,0 +1,8 @@
+{
+	"channel": ["473658181118328834"],
+	"server": ["473658181118328832"],
+	"availRole": {
+		"473658181118328834": ["ucsd", "uci", "ucr", "ucsc", "ucd", "ucla", "ucb", "ucsb", "ucm", "ucsf", "other colleges", "high school", "international student"]
+	},
+	"sendTo": ["485911399269269504"]
+}
