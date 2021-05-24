@@ -9,7 +9,7 @@ A multipurpose helper discord bot that uses discord.js and couple other API's.
 npm install
 ```
 
-###Usage
+### Usage
 
 
 * Create .env file with this structure for your api keys and mariadb database access.
