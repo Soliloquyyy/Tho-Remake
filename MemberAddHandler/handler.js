@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const fs = require('fs');
 const config = require("../globalConfig/config.json");
 const MSGS = require("../globalConfig/messages.json");
+const banFilter = require("../banFilter/banList.json");
 
 var channelID = [];
 var serverID = [];
@@ -19,14 +20,27 @@ module.exports.handle = function(member, client){
 	//check if current server is in the list of welcome
 	const index = serverID.indexOf(currServerID);
 	if(index !== - 1){
-		try{
-			DEBUG && console.log(channelID[index]);
-			//send welcome message to that server
-			member.guild.channels.cache.get(channelID[index]).send(`<@${member.id}> ${MSGS.welcomeUCSD} ${availRole[channelID].join(', ')}`);
+		const username = member.displayName.toLowerCase();
+		DEBUG && console.log(username);
+		let banned = false;
+		for( const filter in banFilter.banList){
+			if(username.includes(filter)){
+				member.ban({
+					reason: "banned through filter list"
+				})
+				.then(banned = true)
+				.catch(console.err);}
 		}
-		catch(err){
-			console.log(err);
-			return;
+		if(!banned){
+			try{
+				DEBUG && console.log(channelID[index]);
+				//send welcome message to that server
+				member.guild.channels.cache.get(channelID[index]).send(`<@${member.id}> ${MSGS.welcomeUCSD} ${availRole[channelID].join(', ')}`);
+			}
+			catch(err){
+				console.log(err);
+				return;
+			}
 		}
 	}
 	return;
